@@ -13,7 +13,6 @@
 :white_check_mark: LINQ    
 :white_check_mark: UniRx    
 :white_check_mark: Code Style     
-:white_check_mark: DOTWeen    
 :white_check_mark: SDK Yandex    
 :white_check_mark: Blender     
 :white_check_mark: Adobe Illustrator    
