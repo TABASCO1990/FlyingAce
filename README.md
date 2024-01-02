@@ -18,4 +18,4 @@
 :white_check_mark: Blender     
 :white_check_mark: Adobe Illustrator    
 :white_check_mark: Реализация адаптивного UI    
-:white_check_mark: Адаптация горизонтальная(пк) и вертикальная(для телефонов)
+:white_check_mark: Адаптация: горизонтальная (для пк) и вертикальная (для телефонов)
