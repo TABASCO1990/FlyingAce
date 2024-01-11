@@ -5,7 +5,7 @@ namespace Game.Player
 {
     public class Points : MonoBehaviour
     {
-        private readonly ReactiveProperty<uint> _currentPoints = new();
+        private readonly ReactiveProperty<uint> _currentPoints = new ();
 
         public ReadOnlyReactiveProperty<uint> CurrentPoints { get; private set; }
 
@@ -16,7 +16,7 @@ namespace Game.Player
         }
 
         private void OnDestroy()
-        { 
+        {
             Enemy.Main.OnEnemyDied -= Collect;
         }
 

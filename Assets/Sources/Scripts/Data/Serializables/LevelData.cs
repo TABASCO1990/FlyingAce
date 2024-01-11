@@ -9,7 +9,7 @@ namespace Data.Serializables
         [SerializeField] private uint _levelIndex;
         [SerializeField] private uint _score;
 
-        public LevelData(uint levelIndex, uint score, uint stars)
+        public LevelData(uint levelIndex, uint score)
         {
             _levelIndex = levelIndex;
             _score = score;

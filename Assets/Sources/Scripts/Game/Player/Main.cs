@@ -6,6 +6,8 @@ namespace Game.Player
     [RequireComponent(typeof(Combat))]
     [RequireComponent(typeof(Input))]
     [RequireComponent(typeof(Movement))]
+    [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(Points))]
     public class Main : MonoBehaviour
     {
         private Combat _combat;

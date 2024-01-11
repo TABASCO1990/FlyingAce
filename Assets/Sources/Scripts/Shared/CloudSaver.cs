@@ -11,7 +11,7 @@ namespace Shared
 
         private void Start()
         {
-            if (YandexGamesSdk.IsRunningOnYandex == true) 
+            if (YandexGamesSdk.IsRunningOnYandex == true)
                 PlayerPrefs.PlayerPrefsChanged += CloudSave;
         }
 

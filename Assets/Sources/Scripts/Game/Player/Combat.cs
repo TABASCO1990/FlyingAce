@@ -24,7 +24,6 @@ namespace Game.Player
             if (combatCollider.ColliderOwner != ColliderOwner.Enemy) return;
 
             combatCollider.TakeDamage(_damage);
-            // Это должен делать враг, но из-за того что при нанесении урона враг уничтожается сразу, он не успевает нанести урон игроку
             _combatCollider.TakeDamage(Constants.EnemyDamage);
         }
     }

@@ -8,7 +8,7 @@ namespace UI.Shop
 {
     public class BuySkinButton : MonoBehaviour
     {
-        private readonly BoolReactiveProperty _unlocked = new();
+        private readonly BoolReactiveProperty _unlocked = new ();
 
         [SerializeField] private Data.SO.Game _data;
         [SerializeField] private Skin _skin;
@@ -18,7 +18,7 @@ namespace UI.Shop
 
         private void Awake()
         {
-            _unlocked.Subscribe(isUnlocked => _priceObject.SetActive(isUnlocked == false) );
+            _unlocked.Subscribe(isUnlocked => _priceObject.SetActive(isUnlocked == false));
 
             if (_data.IsInited == false)
                 _data.Inited += Init;

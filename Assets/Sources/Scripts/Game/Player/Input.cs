@@ -13,14 +13,12 @@ namespace Game.Player
         private Vector3 _pointRotation;
         private Camera _mainCamera;
 
-        public ReactiveProperty<Vector3> HitPosition { get; } = new();
+        public ReactiveProperty<Vector3> HitPosition { get; } = new ();
 
         public void Init(Camera mainCamera, GameObject inputPlane)
         {
             _mainCamera = mainCamera;
             _inputPlane = inputPlane;
-
-            #region нахождение точки вокруг которой вращается игрок
 
             Transform cameraTransform = _mainCamera.transform;
             Vector3 direction = Quaternion.AngleAxis(90, Vector3.right) * cameraTransform.forward;
@@ -31,8 +29,6 @@ namespace Game.Player
                 _pointRotation = new Vector3(0, 0, hit.point.z);
             else
                 throw new InvalidOperationException();
-
-            #endregion
         }
 
         private void Update()
@@ -52,10 +48,8 @@ namespace Game.Player
                 HitPosition.Value = clampedPosition;
             }
 
-            #region Вращение вокруг точки
             Vector3 direction = _pointRotation - _movableTransform.position;
             _movableTransform.rotation = Quaternion.LookRotation(-direction);
-            #endregion
         }
     }
 }

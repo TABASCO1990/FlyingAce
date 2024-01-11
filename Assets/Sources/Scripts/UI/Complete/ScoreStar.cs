@@ -6,11 +6,11 @@ namespace UI.Complete
 {
     public class ScoreStar : MonoBehaviour
     {
-        private readonly BoolReactiveProperty _isOn = new();
+        private readonly BoolReactiveProperty _isOn = new ();
 
         [SerializeField] private Image _starImage;
         [SerializeField] private ParticleSystem _starParticle;
-        
+
         private void Awake()
         {
             _isOn.Subscribe(isOn =>

@@ -6,6 +6,7 @@ namespace Game.Bullet.Factories
     public class QueueSingle : Base
     {
         [SerializeField] private float _queueDelay = 0.1f;
+        [SerializeField] private int _createCount = 8;
 
         protected override IEnumerator Shooting()
         {
@@ -16,10 +17,10 @@ namespace Game.Bullet.Factories
             {
                 yield return queueDelay;
 
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < _createCount; i++)
                 {
                     yield return shootingDelay;
-                
+
                     CreateBullet(_movableTransform.position, _movableTransform.rotation, FlyDuration);
                 }
             }

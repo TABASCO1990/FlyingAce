@@ -16,7 +16,7 @@ namespace UI.Shared
 
         private void OnDisable()
         {
-            _materialCloud.SetTextureOffset(_textureIndex, new Vector2(0,0));
+            _materialCloud.SetTextureOffset(_textureIndex, new Vector2(0, 0));
         }
 
         private void FixedUpdate() => Move();
@@ -24,7 +24,7 @@ namespace UI.Shared
         private void Move()
         {
             float offset = Time.time * _scrollSpeed;
-            _materialCloud.SetTextureOffset(_textureIndex, new Vector2(0.01f,offset));
+            _materialCloud.SetTextureOffset(_textureIndex, new Vector2(0.01f, offset));
         }
     }
 }

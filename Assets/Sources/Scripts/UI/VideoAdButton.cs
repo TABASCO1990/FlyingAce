@@ -36,7 +36,7 @@ namespace UI
                 OnRewardedCallback();
             }
         }
-        
+
         protected virtual void OnCloseCallback()
         {
             _clicked = false;

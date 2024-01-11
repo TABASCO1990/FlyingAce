@@ -6,8 +6,9 @@ namespace Game.Ground
 {
     public class ObjectPool : MonoBehaviour
     {
-        private readonly List<GameObject> _pool = new();
-        private const int _firstObject = 1;
+        private const int FirstObject = 1;
+
+        private readonly List<GameObject> _pool = new ();
 
         [SerializeField] private GameObject _container;
 
@@ -20,7 +21,7 @@ namespace Game.Ground
 
         protected bool TryGetRandomObject(out GameObject result)
         {
-            var randomSelection = _pool.Where(x => x.activeSelf == false).Skip(_firstObject);
+            var randomSelection = _pool.Where(x => x.activeSelf == false).Skip(FirstObject);
             var gameObjects = randomSelection.ToList();
             result = gameObjects.ElementAtOrDefault(new System.Random().Next() % gameObjects.Count());
 

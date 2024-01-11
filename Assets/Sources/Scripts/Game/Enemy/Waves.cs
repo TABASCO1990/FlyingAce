@@ -17,11 +17,11 @@ namespace Game.Enemy
         {
             StartCoroutine(ActivateSequentialRoutine());
         }
-    
+
         private IEnumerator ActivateSequentialRoutine()
         {
             int index = 0;
-    
+
             while (index != _waveEnemies.Length)
             {
                 if (index < _waveEnemies.Length)
@@ -30,15 +30,15 @@ namespace Game.Enemy
                     {
                         wave.SetActive(true);
                     }
-                
+
                     index++;
                 }
-    
+
                 yield return new WaitForSeconds(_delay);
-            
+
                 foreach (var wave in _waveEnemies[index - 1].EnemyFactories)
                 {
-                    wave.SetActive(false); 
+                    wave.SetActive(false);
                 }
 
                 if (index == _waveEnemies.Length && _endless == true)

@@ -27,7 +27,7 @@ namespace Game.Enemy
             while (targetReached == false)
             {
                 var position = _transformToMove.position;
-                
+
                 TargetPosition = directionGetter.Invoke(position);
 
                 if (position == TargetPosition)
@@ -37,8 +37,8 @@ namespace Game.Enemy
                 }
 
                 position = Vector3.MoveTowards(
-                        position, 
-                        TargetPosition, 
+                        position,
+                        TargetPosition,
                         _movementSpeed * Time.deltaTime);
 
                 _transformToMove.position = position;
@@ -49,9 +49,7 @@ namespace Game.Enemy
             }
 
             if (_isBoss == false)
-            {
                 Destroy(transform.parent.gameObject);
-            }
         }
     }
 }

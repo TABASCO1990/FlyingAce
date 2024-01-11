@@ -10,7 +10,9 @@ namespace Game.Effects
     {
         private const string Emission = "_EMISSION";
         private const string EmissionColor = "_EmissionColor";
-        
+
+        private readonly List<Material> _materials = new ();
+
         [SerializeField] private Color _blinkColor = Color.white;
         [SerializeField] private float _hitEffectDuration = 0.05f;
         [FormerlySerializedAs("_root")] [SerializeField] private GameObject _meshParent;
@@ -18,7 +20,6 @@ namespace Game.Effects
 
         private IHealth _health;
         private MeshRenderer[] _meshRenderers;
-        private readonly List<Material> _materials = new();
 
         private void Start()
         {

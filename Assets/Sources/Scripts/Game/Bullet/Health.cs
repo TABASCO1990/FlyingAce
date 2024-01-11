@@ -7,16 +7,13 @@ namespace Game.Bullet
     {
         private CombatCollider _combatCollider;
 
+        private void OnDestroy() => _combatCollider.OnDamage -= OnCombatColliderDamage;
+
         public void Init(CombatCollider combatCollider)
         {
             _combatCollider = combatCollider;
 
             _combatCollider.OnDamage += OnCombatColliderDamage;
-        }
-
-        private void OnDestroy()
-        {
-            _combatCollider.OnDamage -= OnCombatColliderDamage;
         }
         
         public void Die() => Destroy(gameObject);

@@ -9,8 +9,8 @@ namespace Data.Serializables
     public class PlayerPrefsRouter
     {
         [SerializeField] private uint _coins = 0;
-        [SerializeField] private SerializableList<LevelData> _unlockedLevels = new( new List<LevelData> { new(0,0,0) } );
-        [SerializeField] private SerializableList<SkinName> _unlockedSkins = new(new List<SkinName> { SkinName.Default });
+        [SerializeField] private SerializableList<LevelData> _unlockedLevels = new (new List<LevelData> { new (0, 0) });
+        [SerializeField] private SerializableList<SkinName> _unlockedSkins = new (new List<SkinName> { SkinName.Default });
         [SerializeField] private SkinName _currentSkin = SkinName.Default;
         [SerializeField] private Language _language = Language.Russian;
         [SerializeField] private uint _shootDelayUpgrade = 0;

@@ -14,7 +14,7 @@ namespace Game.Level
         private static UI.Dead.Handler _deadHandler;
         private static UI.Complete.DoubleMoneyButton _doubleMoneyButton;
 
-        private readonly CompositeDisposable _disposable = new();
+        private readonly CompositeDisposable _disposable = new ();
 
         [SerializeField] private Builder _builder;
         [SerializeField] private Data.SO.Game _data;
@@ -27,8 +27,8 @@ namespace Game.Level
         private bool _endless;
         private bool _coinsDoubled;
 
-        private Health _health => _builder.Player.Health;
-        private Points _points => _builder.Player.Points;
+        private Health Health => _builder.Player.Health;
+        private Points Points => _builder.Player.Points;
 
         private void OnDestroy()
         {
@@ -62,7 +62,7 @@ namespace Game.Level
 
         private void PlayerValuesLink()
         {
-            _health.IsDead.Subscribe(isDead => { if (isDead == true) OnPlayerDied(); } ).AddTo(_disposable);
+            Health.IsDead.Subscribe(isDead => { if (isDead == true) OnPlayerDied(); }).AddTo(_disposable);
         }
 
         private void OnPlayerDied()
@@ -79,7 +79,7 @@ namespace Game.Level
         {
             yield return new WaitForEndOfFrame();
 
-            var points = _points.CurrentPoints.Value;
+            var points = Points.CurrentPoints.Value;
 
             uint coinsReward = _endless ? points / 2 : 10;
 
@@ -107,7 +107,7 @@ namespace Game.Level
                 });
             }
 
-            _lastScore = _points.CurrentPoints.Value;
+            _lastScore = Points.CurrentPoints.Value;
 
             yield return new WaitForSeconds(Constants.OpenScreenDelay);
 

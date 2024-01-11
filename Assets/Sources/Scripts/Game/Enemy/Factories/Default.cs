@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Game.Enemy.Factories
 {
     public class Default : Base
@@ -11,7 +9,7 @@ namespace Game.Enemy.Factories
             var factoryPosition = _transform.position;
             var factoryForward = _transform.forward;
 
-            InstantiateEnemy(factoryPosition, _transform.parent).StartMove(_ => 
+            InstantiateEnemy(factoryPosition, _transform.parent).StartMove(_ =>
                 factoryPosition + factoryForward * (factoryPosition.z - MaxZPosition));
         }
     }

@@ -6,8 +6,8 @@ namespace Game.Effects
 {
     public class DestroyEffectGenerator : MonoBehaviour
     {
-        private readonly List<GameObject> _effects = new();
         private const int DefaultCount = 3;
+        private readonly List<GameObject> _effects = new ();
 
         [SerializeField] private ParticleSystem _particleExplosion;
 

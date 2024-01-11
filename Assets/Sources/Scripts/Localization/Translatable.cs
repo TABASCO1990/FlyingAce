@@ -9,7 +9,7 @@ namespace Localization
         [SerializeField] protected T _russian;
         [SerializeField] protected T _english;
         [SerializeField] protected T _turkish;
-            
+
         protected Language _currentLanguage;
 
         public virtual void Init(Language language)

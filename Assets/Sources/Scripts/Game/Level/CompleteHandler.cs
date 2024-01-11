@@ -24,7 +24,7 @@ namespace Game.Level
 
         private Coroutine _levelCompleteCoroutine;
 
-        private Points _points => _builder.Player.Points;
+        private Points Points => _builder.Player.Points;
 
         private void OnDestroy()
         {
@@ -59,19 +59,19 @@ namespace Game.Level
 
             _levelCompleteCoroutine = StartCoroutine(LevelCompleteCoroutine());
         }
-        
+
         private IEnumerator LevelCompleteCoroutine()
         {
             yield return new WaitForEndOfFrame();
 
-            var points = _points.CurrentPoints.Value;
+            var points = Points.CurrentPoints.Value;
 
             if (YandexGamesSdk.IsRunningOnYandex == true)
             {
                 Leaderboard.GetPlayerEntry(Constants.MainLeaderboard, response =>
                 {
                     Leaderboard.SetScore(Constants.MainLeaderboard, response.score + (int)points);
-                }, print);
+                });
             }
 
             uint coinsReward = (uint)(points / 1.5f);
@@ -92,7 +92,7 @@ namespace Game.Level
 
             UIState.ChangeState(State.Complete);
         }
-        
+
         private void DoubleMoney()
         {
             _doubleMoneyButton.OnRewarded -= DoubleMoney;

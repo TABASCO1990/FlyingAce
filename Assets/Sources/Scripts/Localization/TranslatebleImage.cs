@@ -15,7 +15,7 @@ namespace Localization
 
             _image.sprite = GetTranslateByLanguage(language);
         }
-        
+
         public override void OnLanguageChanged(Language language)
         {
             if (_currentLanguage == language) return;

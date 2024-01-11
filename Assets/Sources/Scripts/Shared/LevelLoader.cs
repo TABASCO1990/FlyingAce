@@ -38,7 +38,7 @@ namespace Shared
             InstantiateLevel(levelIndex, endless);
 
             LevelLoaded?.Invoke(levelIndex, _levels.GetLevel(levelIndex), endless);
-        
+
             if (_loadedMenuBackground != null)
                 Destroy(_loadedMenuBackground);
         }
@@ -48,8 +48,8 @@ namespace Shared
             UnloadLevel();
             LoadLevel(_loadedLevelIndex);
         }
-        
-        public void NextLevel()
+
+        public void LoadNextLevel()
         {
             UnloadLevel();
             LoadLevel(_loadedLevelIndex + 1);

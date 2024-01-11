@@ -30,6 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4361757677644245913}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,7 +38,6 @@ Transform:
   m_Children:
   - {fileID: 1677038026256459991}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4897645731494237517
 MonoBehaviour:
@@ -51,6 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b661d2b248d44a3e861eafeee480fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _combat: {fileID: 2113867674320034418}
+  _health: {fileID: 9028589510844859318}
+  _movement: {fileID: 8799741305082504299}
+  _combatCollider: {fileID: 6942961696087728436}
 --- !u!114 &2113867674320034418
 MonoBehaviour:
   m_ObjectHideFlags: 0

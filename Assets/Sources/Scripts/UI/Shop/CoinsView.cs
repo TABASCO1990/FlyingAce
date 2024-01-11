@@ -6,7 +6,7 @@ namespace UI.Shop
 {
     public class CoinsView : MonoBehaviour
     {
-        private readonly CompositeDisposable _disposable = new();
+        private readonly CompositeDisposable _disposable = new ();
 
         [SerializeField] private Data.SO.Game _data;
         [SerializeField] private TMP_Text _text;

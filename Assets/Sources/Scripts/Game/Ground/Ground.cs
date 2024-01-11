@@ -5,7 +5,7 @@ namespace Game.Ground
 {
     public class Ground : ObjectPool
     {
-        private readonly List<GameObject> _sections = new();
+        private readonly List<GameObject> _sections = new ();
 
         [SerializeField] private GameObject[] _sectionPrefabs;
         [SerializeField] private int _generateSectionCount;
@@ -67,29 +67,16 @@ namespace Game.Ground
 
         private void ActivateSection()
         {
-            switch (_sections.Count)
+            if (TryGetFirstObject(out GameObject section))
             {
-                case > 0:
-                {
-                    if (TryGetRandomObject(out GameObject section))
-                        SetSection(section, _sections[_sections.Count - 1].transform.position.z + _distanceBetweenSection);
-
-                    break;
-                }
-                case 0:
-                {
-                    if (TryGetFirstObject(out GameObject section))
-                        SetSection(section, section.transform.position.z);
-
-                    break;
-                }
+                SetSection(section, _sections.Count > 0 ? _sections[_sections.Count - 1].transform.position.z + _distanceBetweenSection : section.transform.position.z);
             }
         }
 
         private void DeactivateSection()
         {
             if (_sections[0].transform.localPosition.z + _distanceBetweenSection < _cameraPosition.z == false) return;
-            
+
             _sections[0].SetActive(false);
             _sections.RemoveAt(0);
             _currentSection--;

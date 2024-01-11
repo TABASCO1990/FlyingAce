@@ -17,12 +17,9 @@ namespace Game.Effects
 
             var health = (IHealth)_health;
 
-            health.IsDead.Subscribe(isDead => { if (isDead == true && health.CurrentHealth.Value == 0) Activate(); } );
+            health.IsDead.Subscribe(isDead => { if (isDead == true && health.CurrentHealth.Value == 0) Activate(); });
         }
 
-        private void Activate()
-        {
-            OnEffectActivated?.Invoke(transform.position);
-        }
+        private void Activate() => OnEffectActivated?.Invoke(transform.position);
     }
 }

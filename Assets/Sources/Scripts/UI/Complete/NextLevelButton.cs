@@ -9,10 +9,10 @@ namespace UI.Complete
         [SerializeField] private LevelLoader _levelLoader;
         [SerializeField] private Button _button;
 
-        private void Awake() => _button.onClick.AddListener(_levelLoader.NextLevel);
+        private void Awake() => _button.onClick.AddListener(_levelLoader.LoadNextLevel);
 
         private void OnEnable() => _button.interactable = _levelLoader.LoadedLevelIsLast() == false;
 
-        private void OnDestroy() => _button.onClick.RemoveListener(_levelLoader.NextLevel);
+        private void OnDestroy() => _button.onClick.RemoveListener(_levelLoader.LoadNextLevel);
     }
 }

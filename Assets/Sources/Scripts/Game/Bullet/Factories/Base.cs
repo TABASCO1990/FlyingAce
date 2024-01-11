@@ -12,7 +12,7 @@ namespace Game.Bullet.Factories
         [SerializeField] protected ColliderOwner _colliderToDamage;
         [SerializeField] protected float _shootingDelay;
         [SerializeField] protected float _maxBulletZ_Position = -5;
-        
+
         private Coroutine _shootingCoroutine;
 
         protected float FlyDuration => _maxBulletZ_Position < 0 ? 
@@ -28,7 +28,7 @@ namespace Game.Bullet.Factories
             if (_shootingCoroutine != null)
                 StopCoroutine(_shootingCoroutine);
         }
-        
+
         public void SetShootingDelay(float delay) => _shootingDelay = delay;
 
         protected abstract IEnumerator Shooting();

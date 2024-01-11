@@ -5554,9 +5554,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _texts: []
   _tmpTexts:
-  - _russian: "\u0412\u044B \u043D\u0435 \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u043E\u0432\u0430\u043D\u044B"
-    _english: You are not authorized
-    _turkish: "Yetkili de\u011Filsin"
+  - _russian: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0443\u0439\u0442\u0435\u0441\u044C
+      \u0434\u043B\u044F \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430 \u043B\u0438\u0434\u0435\u0440\u043E\u0432"
+    _english: Login to view leaders
+    _turkish: "Liderleri g\xF6r\xFCnt\xFClemek i\xE7in giri\u015F yap\u0131n"
     _text: {fileID: 589958663}
   _images: []
   _data: {fileID: 11400000, guid: be4a7f448708a44168b566556396fee3, type: 2}
@@ -107637,7 +107638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb055dc8a691477daa79627b85c7eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _count: 363
+  _count: 373
   _text: {fileID: 0}
 --- !u!1 &8041987368604274705
 GameObject:

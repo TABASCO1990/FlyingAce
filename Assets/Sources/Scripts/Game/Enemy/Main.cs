@@ -1,6 +1,6 @@
 using System;
-using UnityEngine;
 using UniRx;
+using UnityEngine;
 
 namespace Game.Enemy
 {
@@ -14,7 +14,7 @@ namespace Game.Enemy
         private Health _health;
         private Movement _movement;
 
-        public static event Action<Main> OnEnemyDied; 
+        public static event Action<Main> OnEnemyDied;
 
         public uint RewardPoints => _rewardPoins;
 

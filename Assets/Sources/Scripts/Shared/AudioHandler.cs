@@ -6,14 +6,15 @@ namespace Shared
 {
     public class AudioHandler : MonoBehaviour
     {
-        private static readonly FloatReactiveProperty _volume = new();
-        public static readonly ReadOnlyReactiveProperty<float> Volume = new(_volume);
+        private static readonly FloatReactiveProperty _volume = new ();
 
         private const string AudioVolume = "AudioVolume";
 
         [SerializeField] private YandexCloudSave _cloudSave;
 
         private bool _pausedByBackground = false;
+
+        public static ReadOnlyReactiveProperty<float> Volume => new (_volume);
 
         private void Awake()
         {
@@ -24,7 +25,7 @@ namespace Shared
                 AudioListener.pause = inBackground;
                 _pausedByBackground = inBackground;
             };
-            
+
             DontDestroyOnLoad(this);
 
             _cloudSave.IsInited.Subscribe(isInited =>

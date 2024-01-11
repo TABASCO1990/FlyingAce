@@ -15,7 +15,7 @@ namespace Localization
 
             _text.text = GetTranslateByLanguage(_currentLanguage);
         }
-        
+
         public override void OnLanguageChanged(Language language)
         {
             if (_currentLanguage == language) return;

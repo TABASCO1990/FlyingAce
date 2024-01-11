@@ -13,6 +13,15 @@ namespace Game.Bullet
 
         private void OnDestroy() => _combatCollider.OnEnter -= OnCombatColliderEnter;
 
+        public void Init(CombatCollider combatCollider, ColliderOwner colliderToDamage, Health health)
+        {
+            _combatCollider = combatCollider;
+            _colliderToDamage = colliderToDamage;
+            _health = health;
+
+            _combatCollider.OnEnter += OnCombatColliderEnter;
+        }
+
         private void OnCombatColliderEnter(CombatCollider combatCollider)
         {
             if (_colliderToDamage == ColliderOwner.Player) return;
@@ -21,15 +30,6 @@ namespace Game.Bullet
 
             combatCollider.TakeDamage(_damage);
             _health.Die();
-        }
-        
-        public void Init(CombatCollider combatCollider, ColliderOwner colliderToDamage, Health health)
-        {
-            _combatCollider = combatCollider;
-            _colliderToDamage = colliderToDamage;
-            _health = health;
-
-            _combatCollider.OnEnter += OnCombatColliderEnter;
         }
     }
 }

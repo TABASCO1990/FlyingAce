@@ -8,11 +8,11 @@ namespace UI.Game
     {
         private void Awake()
         {
-            WebApplication.InBackgroundChangeEvent += InBackground =>
+            WebApplication.InBackgroundChangeEvent += inBackground =>
             {
                 if (TimeHandler.TimeStopped == true) return;
 
-                if (UIState.CurrentState == State.Game && InBackground == true)
+                if (UIState.CurrentState == State.Game && inBackground == true)
                     UIState.ChangeState(State.Pause);
             };
         }

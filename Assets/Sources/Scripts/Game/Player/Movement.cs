@@ -5,9 +5,9 @@ namespace Game.Player
 {
     public class Movement : MonoBehaviour
     {
-        private readonly CompositeDisposable _disposable = new();
+        private readonly CompositeDisposable _disposable = new ();
+        private const uint MoveHeight = 0;
 
-        [SerializeField] private float _moveHeight = 0;
         [SerializeField] private float _maxMovementSpeed = 25;
         [SerializeField] private float _speedSmoothing = 5;
         [SerializeField] private Transform _transformToMove;
@@ -20,7 +20,7 @@ namespace Game.Player
             _input = input;
 
             _input.HitPosition.
-                Subscribe(position => _targetPosition = new Vector3(position.x, _moveHeight, position.z))
+                Subscribe(position => _targetPosition = new Vector3(position.x, MoveHeight, position.z))
                 .AddTo(_disposable);
         }
 

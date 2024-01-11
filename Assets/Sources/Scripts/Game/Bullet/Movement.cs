@@ -20,7 +20,7 @@ namespace Game.Bullet
         {
             StartCoroutine(StartStraightMove(targetPosition));
         }
-        
+
         private IEnumerator StartStraightMove(Vector3 targetPosition)
         {
             _targetReached = false;
@@ -29,20 +29,18 @@ namespace Game.Bullet
 
             while (_targetReached == false)
             {
-                var position = _transformToMove.position;
-
-                position = Vector3.MoveTowards(
-                    position, 
-                    targetPosition, 
+                var nextPosition = Vector3.MoveTowards(
+                    _transformToMove.position,
+                    targetPosition,
                     _movementSpeed * Time.deltaTime);
 
-                if (position == targetPosition)
+                _transformToMove.position = nextPosition;
+
+                if (nextPosition == targetPosition)
                 {
                     _targetReached = true;
                     continue;
                 }
-
-                _transformToMove.position = position;
 
                 yield return new WaitForEndOfFrame();
             }

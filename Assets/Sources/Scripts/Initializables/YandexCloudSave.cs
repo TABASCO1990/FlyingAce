@@ -16,7 +16,7 @@ namespace Initializables
 
                 yield break;
             }
-            
+
             while (YandexGamesSdk.IsInitialized == false)
                 yield return new WaitForFixedUpdate();
 

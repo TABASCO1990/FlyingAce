@@ -10,7 +10,7 @@ namespace Game.Bullet.Factories
             while (true)
             {
                 yield return new WaitForSecondsRealtime(_shootingDelay);
-                
+
                 CreateBullet(_movableTransform.position, _movableTransform.rotation, FlyDuration);
             }
         }

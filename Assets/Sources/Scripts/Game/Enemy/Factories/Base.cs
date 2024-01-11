@@ -7,11 +7,11 @@ namespace Game.Enemy.Factories
     public abstract class Base : MonoBehaviour
     {
         [SerializeField] protected GameObject _prefab;
-        [SerializeField] protected Vector2 _spawnDelayRange = new(1, 2);
+        [SerializeField] protected Vector2 _spawnDelayRange = new (1, 2);
         [SerializeField] protected int _countCreate;
 
         protected Transform _transform;
-        
+
         private int _tempValue;
 
         protected virtual void Awake()
@@ -19,12 +19,12 @@ namespace Game.Enemy.Factories
             _transform = transform;
             _tempValue = _countCreate;
         }
-        
+
         private void OnEnable()
         {
             StartCoroutine(Spawn());
         }
-        
+
         protected abstract void Create();
 
         protected Enemy.Movement InstantiateEnemy(Vector3 position, Transform parent)

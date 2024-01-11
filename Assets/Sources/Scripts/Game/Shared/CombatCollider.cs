@@ -3,12 +3,6 @@ using UnityEngine;
 
 namespace Game.Shared
 {
-    public enum ColliderOwner
-    {
-        Enemy,
-        Player,
-    }
-
     public class CombatCollider : MonoBehaviour
     {
         [SerializeField] private ColliderOwner _colliderOwner;
@@ -16,6 +10,7 @@ namespace Game.Shared
         public ColliderOwner ColliderOwner => _colliderOwner;
 
         public event Action<CombatCollider> OnEnter;
+
         public event Action<uint> OnDamage;
 
         private void OnTriggerEnter(Collider enemyCollider)

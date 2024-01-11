@@ -33,7 +33,7 @@ namespace UI.LevelPicker
             if (_level == null) return;
 
             _difficultScale.sizeDelta = new Vector2(_level.Difficult * _oneScaleSize, _difficultScale.sizeDelta.y);
-            
+
             bool isUnlocked = _data.IsLevelUnlocked(_levelIndex);
 
             _pickButton.interactable = isUnlocked;

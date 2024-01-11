@@ -8,47 +8,42 @@ namespace UI.Leaderboard
 {
     public class View : MonoBehaviour
     {
+        private readonly List<Cell> _cellPool = new ();
+
         [SerializeField] private Transform _parentTransform;
         [SerializeField] private Cell _cellPrefab;
         [SerializeField] private GameObject _authPanel;
         [SerializeField] private Button _authButton;
         [SerializeField] private TMP_Text _label;
 
-        private readonly List<Cell> _cellPool = new();
-
         private LeaderboardEntryResponse[] _entries;
 
         private void OnEnable()
         {
-            if (YandexGamesSdk.IsRunningOnYandex == true)
-            {
-                if (PlayerAccount.IsAuthorized == true)
-                {
-                    UpdateLeaderboard();
+            bool isAuthorized = PlayerAccount.IsAuthorized;
 
-                    if (PlayerAccount.HasPersonalProfileDataPermission == false)
-                    {
-                        PlayerAccount.RequestPersonalProfileDataPermission();
-                    }
-                }
-                else
-                {
-                    _authButton.onClick.AddListener(Auth);
-                }
-            }
-            else
+            if (YandexGamesSdk.IsRunningOnYandex && isAuthorized)
             {
-                SetDebugLeaderboard();
+                UpdateLeaderboard();
+                return;
             }
+
+            if (isAuthorized == false)
+            {
+                _authButton.onClick.AddListener(Auth);
+                return;
+            }
+
+            SetDebugLeaderboard();
         }
 
         public void Init(LeaderboardGetEntriesResponse response, string label = "")
         {
-            if (response != null) 
+            if (response != null)
                 _entries = response.entries;
 
             _label.text = label;
-            
+
             OnEnable();
         }
 
@@ -113,7 +108,7 @@ namespace UI.Leaderboard
                 else
                 {
                     difference = -difference;
-                    
+
                     for (int i = 0; i < difference; i++)
                     {
                         var lastIndex = _cellPool.Count - 1;

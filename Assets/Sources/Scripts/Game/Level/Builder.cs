@@ -11,9 +11,8 @@ namespace Game.Level
         [SerializeField] private DeadHandler _deadHandler;
 
         private Camera _camera;
-        private Player.Main _player;
 
-        public Player.Main Player => _player;
+        public Player.Main Player { get; private set; }
 
         public void Init(Data.SO.Level level, uint levelIndex, bool endless, Camera camera, ScreenHandler screenHandler)
         {
@@ -29,15 +28,15 @@ namespace Game.Level
 
         public void SpawnPlayer(uint? health = null, uint? points = null)
         {
-            _player = Instantiate(_playerPrefab, transform).GetComponentInChildren<Player.Main>();
+            Player = Instantiate(_playerPrefab, transform).GetComponentInChildren<Player.Main>();
 
-            _player.Init(_camera, _inputPlane);
+            Player.Init(_camera, _inputPlane);
 
             if (health != null)
-                _player.Health.SetHealth((uint)health);
+                Player.Health.SetHealth((uint)health);
 
             if (points != null)
-                _player.Points.SetPoints((uint)points);
+                Player.Points.SetPoints((uint)points);
         }
     }
 }

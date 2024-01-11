@@ -12,7 +12,7 @@ namespace UI.Dead
         protected override void OnRewardedCallback()
         {
             _isRewarded = true;
-            
+
             if (YandexGamesSdk.IsRunningOnYandex == false)
                 OnRewarded?.Invoke();
         }

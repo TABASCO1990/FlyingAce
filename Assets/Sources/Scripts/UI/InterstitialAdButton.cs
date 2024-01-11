@@ -27,18 +27,18 @@ namespace UI
                 OnCloseCallback(true);
         }
 
-        private static void OnOpenCallback()
-        {
-            TimeHandler.StopTime();
-            AudioListener.pause = true;
-        }
-
         protected virtual void OnCloseCallback(bool isValid)
         {
             if (isValid == false) return;
 
             TimeHandler.ResumeTime();
             AudioListener.pause = false;
+        }
+
+        private static void OnOpenCallback()
+        {
+            TimeHandler.StopTime();
+            AudioListener.pause = true;
         }
 
         private void OnErrorCallback(string obj)

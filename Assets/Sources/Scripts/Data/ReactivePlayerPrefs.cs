@@ -6,9 +6,6 @@ namespace Data
     public static class ReactivePlayerPrefs
     {
         public static event Action PlayerPrefsChanged;
-        public static event Action<string, string> StringChanged;
-        public static event Action<string, int> IntChanged;
-        public static event Action<string, float> FloatChanged;
 
         public static bool HasKey(string key) => PlayerPrefs.HasKey(key);
 
@@ -28,7 +25,6 @@ namespace Data
         {
             PlayerPrefs.SetString(key, value);
             PlayerPrefsChanged?.Invoke();
-            StringChanged?.Invoke(key, value);
         }
 
         public static string GetString(string key, string defaultValue) => PlayerPrefs.GetString(key, defaultValue);
@@ -39,7 +35,6 @@ namespace Data
         {
             PlayerPrefs.SetInt(key, value);
             PlayerPrefsChanged?.Invoke();
-            IntChanged?.Invoke(key, value);
         }
 
         public static int GetInt(string key, int defaultValue) => PlayerPrefs.GetInt(key, defaultValue);
@@ -50,7 +45,6 @@ namespace Data
         {
             PlayerPrefs.SetFloat(key, value);
             PlayerPrefsChanged?.Invoke();
-            FloatChanged?.Invoke(key, value);
         }
 
         public static float GetFloat(string key, float defaultValue) => PlayerPrefs.GetFloat(key, defaultValue);

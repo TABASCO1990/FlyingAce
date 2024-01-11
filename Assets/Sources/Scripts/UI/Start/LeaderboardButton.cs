@@ -21,7 +21,7 @@ namespace UI.Start
                     Language.Russian => _labels.Russian,
                     Language.English => _labels.English,
                     Language.Turkish => _labels.Turkish,
-                    _ => ""
+                    _ => string.Empty
                 };
 
                 if (YandexGamesSdk.IsRunningOnYandex == true && PlayerAccount.IsAuthorized == true)

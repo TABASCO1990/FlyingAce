@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3643767326038520182}
+  serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6806044022246366017}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!198 &765483958604686206
 ParticleSystem:
@@ -4734,13 +4734,15 @@ ParticleSystemRenderer:
   m_RenderAlignment: 0
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
-  m_UseCustomVertexStreams: 0
   m_EnableGPUInstancing: 0
   m_ApplyActiveColorSpace: 0
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
+  m_UseCustomVertexStreams: 0
   m_VertexStreams: 0001030405
+  m_UseCustomTrailVertexStreams: 0
+  m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
@@ -4763,8 +4765,8 @@ GameObject:
   - component: {fileID: 4216929398508634596}
   - component: {fileID: 3023309419624536844}
   - component: {fileID: 3670785059324418748}
-  - component: {fileID: 7464294812588809372}
   - component: {fileID: 2478826022942859623}
+  - component: {fileID: 7464294812588809372}
   - component: {fileID: 6538781997667706771}
   m_Layer: 7
   m_Name: Bullet Blue
@@ -4780,6 +4782,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8288915126102957222}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -4787,7 +4790,6 @@ Transform:
   m_Children:
   - {fileID: 3030004537309974295}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &293091150929216068
 MonoBehaviour:
@@ -4801,6 +4803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b661d2b248d44a3e861eafeee480fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _combat: {fileID: 4216929398508634596}
+  _health: {fileID: 3670785059324418748}
+  _movement: {fileID: 3023309419624536844}
+  _combatCollider: {fileID: 2478826022942859623}
 --- !u!114 &4216929398508634596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4840,6 +4846,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2b1c8a3e01ba41f4a063794795d12a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2478826022942859623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8288915126102957222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7430f293865d4b279ad140c84f6f3b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderOwner: 0
 --- !u!54 &7464294812588809372
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4867,19 +4886,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2478826022942859623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8288915126102957222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7430f293865d4b279ad140c84f6f3b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colliderOwner: 0
 --- !u!135 &6538781997667706771
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ namespace UI.Shop
                 _data.Inited += Init;
             else
                 Init();
-            
+
             _upgradeButton.onClick.AddListener(Upgrade);
         }
 

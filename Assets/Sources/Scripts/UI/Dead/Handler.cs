@@ -27,9 +27,9 @@ namespace UI.Dead
             _doubleMoneyButton.SetActive(endless);
             _score.SetActive(endless);
         }
-        
+
         public void SetCoins(uint coins) => _coinsText.text = coins.ToString();
-        
+
         public void SetScore(uint score) => _scoreText.text = score.ToString();
 
         private void DisableButton() => _reviveButton.SetActive(false);

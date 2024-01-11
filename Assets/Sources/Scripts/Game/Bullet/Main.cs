@@ -4,25 +4,23 @@ using UnityEngine;
 namespace Game.Bullet
 {
     [RequireComponent(typeof(Combat))]
+    [RequireComponent(typeof(Health))]
     [RequireComponent(typeof(Movement))]
+    [RequireComponent(typeof(CombatCollider))]
     public class Main : MonoBehaviour
     {
-        private Combat _combat;
-        private Health _health;
-        private CombatCollider _combatCollider;
+        [SerializeField] private Combat _combat;
+        [SerializeField] private Health _health;
+        [SerializeField] private Movement _movement;
+        [SerializeField] private CombatCollider _combatCollider;
 
-        public Movement Movement { get; private set; }
+        public Movement Movement => _movement;
 
         public void Init(ColliderOwner colliderToDamage)
         {
-            _combat = GetComponent<Combat>();
-            _health = GetComponent<Health>();
-            _combatCollider = GetComponent<CombatCollider>();
-            Movement = GetComponent<Movement>();
-
             _combat.Init(_combatCollider, colliderToDamage, _health);
             _health.Init(_combatCollider);
-            Movement.Init(_health);
-        }       
+            _movement.Init(_health);
+        }
     }
 }

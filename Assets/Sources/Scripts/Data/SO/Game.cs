@@ -10,17 +10,17 @@ namespace Data.SO
 {
     public class Game : ScriptableObject
     {
+        public ReadOnlyReactiveProperty<uint> Coins;
+        public ReadOnlyReactiveProperty<SkinName> CurrentSkin;
+        public ReadOnlyReactiveProperty<uint> ShootDelayUpgrade;
+        public ReadOnlyReactiveProperty<Language> Language;
+
         private ReactiveProperty<uint> _coins;
         private ReactiveCollection<LevelData> _unlockedLevels;
         private ReactiveCollection<SkinName> _unlockedSkins;
         private ReactiveProperty<SkinName> _currentSkin;
         private ReactiveProperty<Language> _language;
         private ReactiveProperty<uint> _shootDelayUpgrade;
-
-        public ReadOnlyReactiveProperty<uint> Coins;
-        public ReadOnlyReactiveProperty<SkinName> CurrentSkin;
-        public ReadOnlyReactiveProperty<uint> ShootDelayUpgrade;
-        public ReadOnlyReactiveProperty<Language> Language;
 
         public event Action Inited; 
 
@@ -63,13 +63,13 @@ namespace Data.SO
         public void UnlockLevel(uint levelIndex)
         {
             if (IsLevelUnlocked(levelIndex) == false)
-                _unlockedLevels.Add(new LevelData(levelIndex, 0, 0));
+                _unlockedLevels.Add(new LevelData(levelIndex, 0));
         }
 
         public void SetLevelValues(uint levelIndex, uint score)
         {
             if (TryGetLevel(levelIndex, out LevelData level) == false) throw new InvalidOperationException();
-            
+
             level.UpdateValues(score);
             PlayerPrefs.SetString(nameof(_unlockedLevels), JsonUtility.ToJson(new SerializableList<LevelData>(_unlockedLevels.ToList())));
         }
@@ -77,7 +77,7 @@ namespace Data.SO
         public bool TryBuySkin(Skin skin)
         {
             if (TrySpendCoins(skin.Price) == false) return false;
-            
+
             UnlockSkin(skin.SkinName);
             return true;
         }
@@ -86,9 +86,9 @@ namespace Data.SO
         {
             if (_shootDelayUpgrade.Value >= Constants.MaxShootDelayUpgrade) return false;
             if (TrySpendCoins(Constants.ShootDelayUpgradePrice) == false) return false;
-            
+
             UpgradeShootDelay();
-            
+
             return true;
         }
 
@@ -112,20 +112,20 @@ namespace Data.SO
 
         private void LinkPlayerPrefs()
         {
-            _coins.Subscribe(_ => PlayerPrefs.SetInt(nameof(_coins), (int)_coins.Value) );
+            _coins.Subscribe(_ => PlayerPrefs.SetInt(nameof(_coins), (int)_coins.Value));
             _unlockedSkins.ObserveAdd().Subscribe(_ => 
-                {PlayerPrefs.SetString(nameof(_unlockedLevels), JsonUtility.ToJson(new SerializableList<LevelData>(_unlockedLevels.ToList())));});
+                { PlayerPrefs.SetString(nameof(_unlockedLevels), JsonUtility.ToJson(new SerializableList<LevelData>(_unlockedLevels.ToList()))); });
             _unlockedSkins.ObserveAdd().Subscribe(_ => 
-                {PlayerPrefs.SetString(nameof(_unlockedSkins), JsonUtility.ToJson(new SerializableList<SkinName>(_unlockedSkins.ToList())));});
-            _currentSkin.Subscribe(_ => PlayerPrefs.SetInt(nameof(_currentSkin), (int)_currentSkin.Value) );
-            _language.Subscribe(_ => PlayerPrefs.SetInt(nameof(_language), (int)_language.Value) );
-            _shootDelayUpgrade.Subscribe(_ => PlayerPrefs.SetInt(nameof(_shootDelayUpgrade), (int)_shootDelayUpgrade.Value) );
+                { PlayerPrefs.SetString(nameof(_unlockedSkins), JsonUtility.ToJson(new SerializableList<SkinName>(_unlockedSkins.ToList()))); });
+            _currentSkin.Subscribe(_ => PlayerPrefs.SetInt(nameof(_currentSkin), (int)_currentSkin.Value));
+            _language.Subscribe(_ => PlayerPrefs.SetInt(nameof(_language), (int)_language.Value));
+            _shootDelayUpgrade.Subscribe(_ => PlayerPrefs.SetInt(nameof(_shootDelayUpgrade), (int)_shootDelayUpgrade.Value));
         }
 
         private void SetPlayerPrefs()
         {
             _coins.Value = _coins.Value;
-            _unlockedLevels.Add(new LevelData(0,0, 0));
+            _unlockedLevels.Add(new LevelData(0,0));
             _unlockedSkins.Add(SkinName.Default);
             _currentSkin.Value = _currentSkin.Value;
             _language.Value = _language.Value;
@@ -149,14 +149,14 @@ namespace Data.SO
             _coins.Value -= coins;
             return true;
         }
-        
+
         private bool TryGetLevel(uint levelIndex, out LevelData levelData)
         {
             levelData = _unlockedLevels.FirstOrDefault(lvl => lvl.LevelIndex == levelIndex);
 
             return levelData != null;
         }
-        
+
         private void UnlockSkin(SkinName skinToUnlock)
         {
             if (_unlockedSkins.Contains(skinToUnlock) == true) throw new InvalidOperationException();
@@ -167,4 +167,3 @@ namespace Data.SO
         private void UpgradeShootDelay() => _shootDelayUpgrade.Value++;
     }
 }
-
